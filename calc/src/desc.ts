@@ -108,11 +108,8 @@ export function getRecovery(
   const ignoresShellBell =
     gen.num === 3 && move.named('Doom Desire', 'Future Sight');
   if (attacker.hasItem('Shell Bell') && !ignoresShellBell) {
-    const max = Math.round(defender.maxHP() / 8);
-    for (let i = 0; i < minD.length; i++) {
-      recovery[0] += Math.min(Math.round(minD[i] * move.hits / 8), max);
-      recovery[1] += Math.min(Math.round(maxD[i] * move.hits / 8), max);
-    }
+    const hpmissing = (attacker.maxHP() - attacker.curHP());
+    recovery[0] = recovery[1] = Math.round(hpmissing/3);
   }
 
   if (move.named('G-Max Finale')) {

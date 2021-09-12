@@ -1101,6 +1101,9 @@ export function calculateAtModsSMSS(
   ) {
     atMods.push(6144);
     desc.attackerItem = attacker.item;
+  } else if (attacker.hasItem('Light Ball') && attacker.name.includes('Raichu')) {
+    atMods.push(6144);
+    desc.attackerItem = attacker.item;
   }
   return atMods;
 }
