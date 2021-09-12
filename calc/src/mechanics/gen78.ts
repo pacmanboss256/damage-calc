@@ -184,6 +184,7 @@ export function calculateSMSS(
   let isPixilate = false;
   let isRefrigerate = false;
   let isGalvanize = false;
+  let isSandSong = false;
   let isLiquidVoice = false;
   let isNormalize = false;
   const noTypeChange = move.named(
@@ -205,6 +206,8 @@ export function calculateSMSS(
       type = 'Electric';
     } else if ((isLiquidVoice = attacker.hasAbility('Liquid Voice') && !!move.flags.sound)) {
       type = 'Water';
+    } else if ((isSandSong = attacker.hasAbility('Sand Song') && !!move.flags.sound)) {
+      type = 'Ground';
     } else if ((isPixilate = attacker.hasAbility('Pixilate') && normal)) {
       type = 'Fairy';
     } else if ((isRefrigerate = attacker.hasAbility('Refrigerate') && normal)) {
@@ -215,7 +218,7 @@ export function calculateSMSS(
     if (isGalvanize || isPixilate || isRefrigerate || isAerilate || isNormalize) {
       desc.attackerAbility = attacker.ability;
       hasAteAbilityTypeChange = true;
-    } else if (isLiquidVoice) {
+    } else if (isLiquidVoice || isSandSong) {
       desc.attackerAbility = attacker.ability;
     }
   }
@@ -787,7 +790,7 @@ export function calculateBPModsSMSS(
     bpMods.push(6144);
     desc.moveBP = basePower * 1.5;
   } else if (move.named('Solar Beam', 'Solar Blade') &&
-      field.hasWeather('Rain', 'Heavy Rain', 'Sand', 'Hail')) {
+      field.hasWeather('Rain', 'Heavy Rain', 'Sand', 'Hail') && !attacker.hasAbility('Chloroplast')) {
     bpMods.push(2048);
     desc.moveBP = basePower / 2;
     desc.weather = field.weather;
@@ -863,7 +866,8 @@ export function calculateBPModsSMSS(
       (attacker.hasAbility('Analytic') &&
         (turnOrder !== 'first' || field.defenderSide.isSwitching === 'out')) ||
       (attacker.hasAbility('Tough Claws') && move.flags.contact) ||
-      (attacker.hasAbility('Punk Rock') && move.flags.sound)
+      (attacker.hasAbility('Punk Rock') && move.flags.sound) ||
+      (attacker.hasAbility('Keen Edge') && move.flags.blade)
   ) {
     bpMods.push(5325);
     desc.attackerAbility = attacker.ability;
@@ -895,10 +899,19 @@ export function calculateBPModsSMSS(
   if (!move.isMax && hasAteAbilityTypeChange) {
     bpMods.push(4915);
   }
+  if (!move.isMax && attacker.hasAbility('Liquid Voice') && !!move.flags.sound) {
+    bpMods.push(4915);
+  }
 
   if ((attacker.hasAbility('Reckless') && (move.recoil || move.hasCrashDamage)) ||
       (attacker.hasAbility('Iron Fist') && move.flags.punch)
   ) {
+    bpMods.push(4915);
+    desc.attackerAbility = attacker.ability;
+  }
+  
+  if (attacker.hasAbility('Power Fists') && move.flags.punch) {
+    move.defensiveCategory = 'Special';
     bpMods.push(4915);
     desc.attackerAbility = attacker.ability;
   }
@@ -1029,11 +1042,21 @@ export function calculateAtModsSMSS(
       ((attacker.hasAbility('Overgrow') && move.hasType('Grass')) ||
        (attacker.hasAbility('Blaze') && move.hasType('Fire')) ||
        (attacker.hasAbility('Torrent') && move.hasType('Water')) ||
-       (attacker.hasAbility('Swarm') && move.hasType('Bug')))) ||
+       (attacker.hasAbility('Swarm') && move.hasType('Bug')) ||
+       (attacker.hasAbility('Vengeance') && move.hasType('Ghost')))) ||
     (move.category === 'Special' && attacker.abilityOn && attacker.hasAbility('Plus', 'Minus'))
   ) {
     atMods.push(6144);
     desc.attackerAbility = attacker.ability;
+  } else if ((attacker.curHP() > attacker.maxHP() / 3 &&
+    ((attacker.hasAbility('Overgrow') && move.hasType('Grass')) ||
+      (attacker.hasAbility('Blaze') && move.hasType('Fire')) ||
+      (attacker.hasAbility('Torrent') && move.hasType('Water')) ||
+      (attacker.hasAbility('Swarm') && move.hasType('Bug')) ||
+      (attacker.hasAbility('Vengeance') && move.hasType('Ghost'))))) 
+    { 
+      atMods.push(4915);
+      desc.attackerAbility = attacker.ability;
   } else if (attacker.hasAbility('Flash Fire') && attacker.abilityOn && move.hasType('Fire')) {
     atMods.push(6144);
     desc.attackerAbility = 'Flash Fire';
@@ -1142,6 +1165,8 @@ export function calculateDfModsSMSS(
   if (defender.hasAbility('Marvel Scale') && defender.status && hitsPhysical) {
     dfMods.push(6144);
     desc.defenderAbility = defender.ability;
+  } else if (defender.hasType('Ice') && field.hasWeather('Hail') && hitsPhysical) {
+    dfMods.push(6144);
   } else if (
     defender.named('Cherrim') &&
     defender.hasAbility('Flower Gift') &&
@@ -1189,7 +1214,8 @@ export function calculateFinalModsSMSS(
 ) {
   const finalMods = [];
 
-  if (field.defenderSide.isReflect && move.category === 'Physical' &&
+  if (field.defenderSide.isReflect && 
+    (move.category === 'Physical' || (attacker.hasAbility('Power Fists') && move.flags.punch)) &&
       !isCritical && !field.defenderSide.isAuroraVeil) {
     // doesn't stack with Aurora Veil
     finalMods.push(field.gameType !== 'Singles' ? 2732 : 2048);
@@ -1250,6 +1276,11 @@ export function calculateFinalModsSMSS(
   if (field.defenderSide.isFriendGuard) {
     finalMods.push(3072);
     desc.isFriendGuard = true;
+  }
+
+  if (defender.hasAbility('Prism Scales') && move.category === 'Special') {
+    finalMods.push(2867);
+    desc.defenderAbility = defender.ability
   }
 
   if (defender.hasAbility('Fluffy') && move.hasType('Fire')) {

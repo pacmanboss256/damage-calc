@@ -35,6 +35,7 @@ export interface MoveData {
   readonly isBullet?: boolean;
   readonly isSound?: boolean;
   readonly isPulse?: boolean;
+  readonly isBlade?: boolean;
 }
 
 const RBY: {[name: string]: MoveData} = {
@@ -4121,7 +4122,7 @@ const SS_PATCH: {[name: string]: DeepPartial<MoveData>} = {
 };
 
 const IE_PATCH: { [name: string]: DeepPartial<MoveData> } = {
-  Cut: {bp: 60, type: 'Steel'},
+  Cut: {bp: 60, type: 'Steel', isBlade: true},
   'Rock Smash': {bp: 50},
   'Wing Attack': {bp: 80},
   Submission: {bp: 90},
@@ -4144,7 +4145,7 @@ const IE_PATCH: { [name: string]: DeepPartial<MoveData> } = {
   'Steel Wing': {bp: 90},
   'Power Gem': {bp: 90},
   'Needle Arm': {bp: 90},
-  'Cross Poison': {bp: 90},
+  'Cross Poison': {bp: 90, isBlade: true},
   'Rock Climb': {type: 'Rock'},
   'Disarming Voice': {bp: 60},
   Octazooka: {bp: 85},
@@ -4153,6 +4154,22 @@ const IE_PATCH: { [name: string]: DeepPartial<MoveData> } = {
   'Bone Rush': {bp: 15, priority: 1},
   'Luster Purge': {bp: 95},
   'Mist Ball': {bp: 95},
+  Slash: {isBlade: true},
+  'False Swipe': {isBlade: true},
+  'Fury Cutter': {isBlade: true},
+  'Aerial Ace': {isBlade: true},
+  'Leaf Blade': {isBlade: true},
+  'Night Slash': {isBlade: true},
+  'Air Slash': {isBlade: true},
+  'X-Scissor': {isBlade: true},
+  'Psycho Cut': {isBlade: true},
+  'Sacred Sword': {isBlade: true},
+  'Razor Shell': {isBlade: true},
+  'Secret Sword': {isBlade: true},
+  'Solar Blade': {isBlade: true},
+  'Behemoth Blade': {isBlade: true},
+  'Breaking Swipe': {isBlade: true},
+  'Meteor Assault': {isBlade: true},
 };
 
 const SS: {[name: string]: MoveData} = extend(true, {}, SM, SS_PATCH, IE_PATCH);

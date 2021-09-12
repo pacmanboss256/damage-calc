@@ -293,10 +293,16 @@ const SS = SM.concat([
   'Wandering Spirit',
 ]);
 const IE = SS.concat([
-  
+  'Chloroplast',
+  'Whiteout',
+  'Keen Edge',
+  'Prism Scales',
+  'Power Fists',
+  'Sand Song',
+  'Vengeance',
 ]);
 
-export const ABILITIES = [[], RBY, GSC, ADV, DPP, BW, XY, SM, SS, IE];
+export const ABILITIES = [[], RBY, GSC, ADV, DPP, BW, XY, SM, IE];
 
 export class Abilities implements I.Abilities {
   private readonly gen: I.GenerationNum;
