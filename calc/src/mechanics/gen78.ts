@@ -238,7 +238,7 @@ export function calculateSMSS(
     : 1;
   let typeEffectiveness = type1Effectiveness * type2Effectiveness;
 
-  if (typeEffectiveness === 0 && move.named('Thousand Arrows')) {
+  if (typeEffectiveness === 0 && move.named('Thousand Arrows' || 'Bonemerang')) {
     typeEffectiveness = 1;
   } else if (typeEffectiveness === 0 && move.hasType('Ground') &&
     defender.hasItem('Iron Ball') && !defender.hasAbility('Klutz')) {
@@ -279,9 +279,9 @@ export function calculateSMSS(
       (move.hasType('Fire') && defender.hasAbility('Flash Fire')) ||
       (move.hasType('Water') && defender.hasAbility('Dry Skin', 'Storm Drain', 'Water Absorb')) ||
       (move.hasType('Electric') &&
-        defender.hasAbility('Lightning Rod', 'Motor Drive', 'Volt Absorb')) ||
+        defender.hasAbility('Lightning Rod', 'Motor Drive', 'Volt Absorb')) || 
       (move.hasType('Ground') &&
-        !field.isGravity && !move.named('Thousand Arrows') &&
+        !field.isGravity && !move.named('Thousand Arrows' || 'Bonemerang') &&
         !defender.hasItem('Iron Ball') && defender.hasAbility('Levitate')) ||
       (move.flags.bullet && defender.hasAbility('Bulletproof')) ||
       (move.flags.sound && !move.named('Clangorous Soul') && defender.hasAbility('Soundproof')) ||
@@ -291,7 +291,7 @@ export function calculateSMSS(
     return result;
   }
 
-  if (move.hasType('Ground') && !move.named('Thousand Arrows') &&
+  if (move.hasType('Ground') && !move.named('Thousand Arrows' || 'Bonemerang') &&
       !field.isGravity && defender.hasItem('Air Balloon')) {
     desc.defenderItem = defender.item;
     return result;
@@ -699,7 +699,7 @@ export function calculateBasePowerSMSS(
     break;
   // Triple Kick's damage doubles after each consecutive hit (10, 20, 30), this is a hack
   case 'Triple Kick':
-    basePower = move.hits === 2 ? 15 : move.hits === 3 ? 30 : 10;
+    basePower = move.hits === 2 ? 30 : move.hits === 3 ? 40 : 20;
     desc.moveBP = basePower;
     break;
   case 'Crush Grip':

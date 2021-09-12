@@ -292,8 +292,11 @@ const SS = SM.concat([
   'Unseen Fist',
   'Wandering Spirit',
 ]);
+const IE = SS.concat([
+  
+]);
 
-export const ABILITIES = [[], RBY, GSC, ADV, DPP, BW, XY, SM, SS];
+export const ABILITIES = [[], RBY, GSC, ADV, DPP, BW, XY, SM, SS, IE];
 
 export class Abilities implements I.Abilities {
   private readonly gen: I.GenerationNum;

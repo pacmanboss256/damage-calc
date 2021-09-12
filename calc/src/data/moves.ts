@@ -4120,7 +4120,42 @@ const SS_PATCH: {[name: string]: DeepPartial<MoveData>} = {
   'Zing Zap': {maxPower: 130},
 };
 
-const SS: {[name: string]: MoveData} = extend(true, {}, SM, SS_PATCH);
+const IE_PATCH: { [name: string]: DeepPartial<MoveData> } = {
+  Cut: {bp: 60, type: 'Steel'},
+  'Rock Smash': {bp: 50},
+  'Wing Attack': {bp: 80},
+  Submission: {bp: 90},
+  Chatter: {bp: 90},
+  'Shadow Punch': {bp: 80},
+  'Water Pulse': {bp: 80},
+  'Arm Thrust': {bp: 25},
+  'Spike Cannon': {bp: 25, type: 'Water'},
+  Absorb: {bp: 35},
+  'Mega Drain': {bp: 60},
+  'Mystical Fire': {bp: 85},
+  'Parabolic Charge': {bp: 90, drain: [1, 4]},
+  'Draining Kiss': {bp: 75, drain: [1,2]},
+  'Spirit Shackle': {bp: 90},
+  'Darkest Lariat': {bp: 95},
+  'Sparkling Aria': {bp: 100},
+  'Freeze Dry': {bp: 95},
+  'Twineedle': {bp: 45},
+  'Triple Kick': {bp: 20},
+  'Steel Wing': {bp: 90},
+  'Power Gem': {bp: 90},
+  'Needle Arm': {bp: 90},
+  'Cross Poison': {bp: 90},
+  'Rock Climb': {type: 'Rock'},
+  'Disarming Voice': {bp: 60},
+  Octazooka: {bp: 85},
+  'Comet Punch': {bp: 25},
+  Glaciate: {bp: 80},
+  'Bone Rush': {bp: 15, priority: 1},
+  'Luster Purge': {bp: 95},
+  'Mist Ball': {bp: 95},
+};
+
+const SS: {[name: string]: MoveData} = extend(true, {}, SM, SS_PATCH, IE_PATCH);
 
 const LGPE_MOVES = [
   'Baddy Bad',
