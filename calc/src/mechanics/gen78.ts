@@ -419,11 +419,16 @@ export function calculateSMSS(
   if (!noWeatherBoost && (field.hasWeather('Sun', 'Harsh Sunshine') &&
         move.hasType('Fire')) ||
        (field.hasWeather('Rain', 'Heavy Rain') && move.hasType('Water'))) {
+    baseDamage = pokeRound(OF32(baseDamage * 4915) / 4096);
+    desc.weather = field.weather;
+  } else if (!noWeatherBoost && (field.hasWeather('Sunny Day') &&
+    move.hasType('Fire')) ||
+    (field.hasWeather('Rain Dance') && move.hasType('Water'))) {
     baseDamage = pokeRound(OF32(baseDamage * 6144) / 4096);
     desc.weather = field.weather;
   } else if (!noWeatherBoost &&
-    (field.hasWeather('Sun') && move.hasType('Water')) ||
-    (field.hasWeather('Rain') && move.hasType('Fire'))
+    (field.hasWeather('Sun', 'Sunny Day') && move.hasType('Water')) ||
+    (field.hasWeather('Rain', 'Rain Dance') && move.hasType('Fire'))
   ) {
     baseDamage = pokeRound(OF32(baseDamage * 2048) / 4096);
     desc.weather = field.weather;
@@ -1044,7 +1049,8 @@ export function calculateAtModsSMSS(
        (attacker.hasAbility('Torrent') && move.hasType('Water')) ||
        (attacker.hasAbility('Swarm') && move.hasType('Bug')) ||
        (attacker.hasAbility('Vengeance') && move.hasType('Ghost')))) ||
-    (move.category === 'Special' && attacker.abilityOn && attacker.hasAbility('Plus', 'Minus'))
+    (move.category === 'Special' && attacker.abilityOn && attacker.hasAbility('Plus', 'Minus')) ||
+    (attacker.hasAbility('Whiteout') && move.hasType('Ice') && field.hasWeather('Hail'))
   ) {
     atMods.push(6144);
     desc.attackerAbility = attacker.ability;
