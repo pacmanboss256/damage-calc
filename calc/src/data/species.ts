@@ -8678,7 +8678,23 @@ const SS_PATCH: {[name: string]: DeepPartial<SpeciesData>} = {
   },
 };
 
-const SS: {[name: string]: SpeciesData} = extend(true, {}, SM, SS_PATCH);
+// bs: {hp: , at: , df: , sa: , sd: , sp: }
+
+const IE_PATCH: { [name: string]: DeepPartial<SpeciesData> } = {
+  Blastoise: {bs: {at: 73, sa: 95}},
+  Butterfree: {bs: {sa: 100, sp: 90}, otherFormes: ['Butterfree-Mega']},
+  'Butterfree-Mega': {
+    bs: {hp: 60, at: 15, df: 60, sa: 160, sd: 120, sp: 110},
+    types: ['Bug', 'Flying'],
+    abilities: {0: 'Compound Eyes'},
+  },
+  Beedrill: {bs: {at: 100, sp: 90}},
+  'Beedrill-Mega': {bs: {df: 60, sd: 90}},
+  
+
+};
+
+const SS: {[name: string]: SpeciesData} = extend(true, {}, SM, SS_PATCH, IE_PATCH);
 
 delete SS['Pikachu-Starter'];
 delete SS['Eevee-Starter'];
