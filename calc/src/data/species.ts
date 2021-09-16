@@ -8999,6 +8999,15 @@ const IE_PATCH: { [name: string]: DeepPartial<SpeciesData> } = {
   'Lycanrock-Midnight': {bs: {hp: 85, df: 85}, types: ['Rock', 'Dark']},
   'Lycanroc-Dusk': {bs: {at: 127, df: 70, sd: 70}},
   Araquanid: {bs: {at: 90}},
+  Lurantis: {bs: {hp: 80, at: 115, df: 95, sd: 95}},
+  Shiinotic: {bs: {hp: 80, sa: 100, sd: 110}},
+  Tsareena: {bs: {df: 90, sd: 90, sp: 108}, types: ['Grass', 'Fighting']},
+  Palossand: {bs: {df: 120, sd: 85}},
+  Silvally: {bs: {hp: 100, at: 100, df: 100, sa: 100, sd: 100, sp: 100}},
+  Komala: {bs: {hp: 85, df: 95, sa: 55}},
+  Turtonator: {bs: {sa: 111}},
+  Togedemaru: {bs: {at: 108, df: 83, sp: 106}},
+  Dhelmise: {bs: {df: 120, sa: 76}},
 };
 
 
