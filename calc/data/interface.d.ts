@@ -17,7 +17,7 @@ export declare type SpeciesName = string & As<'SpeciesName'>;
 export declare type StatusName = 'slp' | 'psn' | 'brn' | 'frz' | 'par' | 'tox';
 export declare type GameType = 'Singles' | 'Doubles';
 export declare type Terrain = 'Electric' | 'Grassy' | 'Psychic' | 'Misty';
-export declare type Weather = 'Sand' | 'Sun' | 'Rain' | 'Hail' | 'Harsh Sunshine' | 'Heavy Rain' | 'Strong Winds';
+export declare type Weather = 'Sand' | 'Sun' | 'Rain' | 'Hail' | 'Harsh Sunshine' | 'Heavy Rain' | 'Strong Winds' | 'Rain Dance' | 'Sunny Day';
 export declare type NatureName = 'Adamant' | 'Bashful' | 'Bold' | 'Brave' | 'Calm' | 'Careful' | 'Docile' | 'Gentle' | 'Hardy' | 'Hasty' | 'Impish' | 'Jolly' | 'Lax' | 'Lonely' | 'Mild' | 'Modest' | 'Naive' | 'Naughty' | 'Quiet' | 'Quirky' | 'Rash' | 'Relaxed' | 'Sassy' | 'Serious' | 'Timid';
 export declare type TypeName = 'Normal' | 'Fighting' | 'Flying' | 'Poison' | 'Ground' | 'Rock' | 'Bug' | 'Ghost' | 'Steel' | 'Fire' | 'Water' | 'Grass' | 'Electric' | 'Psychic' | 'Ice' | 'Dragon' | 'Dark' | 'Fairy' | '???';
 export declare type MoveCategory = 'Physical' | 'Special' | 'Status';
@@ -68,6 +68,7 @@ export interface MoveFlags {
     contact?: 1 | 0;
     bite?: 1 | 0;
     sound?: 1 | 0;
+    blade?: 1 | 0;
     punch?: 1 | 0;
     bullet?: 1 | 0;
     pulse?: 1 | 0;

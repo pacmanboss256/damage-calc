@@ -28,6 +28,7 @@ export interface MoveData {
     readonly isBullet?: boolean;
     readonly isSound?: boolean;
     readonly isPulse?: boolean;
+    readonly isBlade?: boolean;
 }
 export declare const MOVES: {
     [name: string]: MoveData;
