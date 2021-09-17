@@ -1,4 +1,4 @@
-# Pokémon Damage Calculator
+# Pokémon Damage Calculator 
 
 ![Test Status](https://github.com/smogon/damage-calc/workflows/Tests/badge.svg)
 [![npm version](https://img.shields.io/npm/v/@smogon/calc.svg)](https://www.npmjs.com/package/@smogon/calc)&nbsp;
