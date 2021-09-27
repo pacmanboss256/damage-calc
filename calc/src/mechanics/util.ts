@@ -89,11 +89,11 @@ export function getFinalSpeed(gen: Generation, pokemon: Pokemon, field: Field, s
     mods *= 2;
   }
 
-  if ((pokemon.hasAbility('Unburden') && pokemon.abilityOn) ||
-      (pokemon.hasAbility('Chlorophyll') && weather.includes('Sun')) ||
-      (pokemon.hasAbility('Sand Rush') && weather === 'Sand') ||
-      (pokemon.hasAbility('Swift Swim') && weather.includes('Rain')) ||
-      (pokemon.hasAbility('Slush Rush') && weather === 'Hail') ||
+  if ((pokemon.hasAbility('Unburden') && pokemon.abilityOn) || 
+      (pokemon.hasAbility('Chlorophyll') && weather.includes('Sun')) || 
+      (pokemon.hasAbility('Sand Rush') && weather === 'Sand') || 
+      (pokemon.hasAbility('Swift Swim') && weather.includes('Rain')) || 
+      (pokemon.hasAbility('Slush Rush') && weather === 'Hail') || 
       (pokemon.hasAbility('Surge Surfer') && terrain === 'Electric')
   ) {
     speed *= 2;
@@ -147,10 +147,12 @@ export function checkForecast(pokemon: Pokemon, weather?: Weather) {
     switch (weather) {
     case 'Sun':
     case 'Harsh Sunshine':
+    case 'Sunny Day':
       pokemon.types = ['Fire'];
       break;
     case 'Rain':
     case 'Heavy Rain':
+    case 'Rain Dance':
       pokemon.types = ['Water'];
       break;
     case 'Hail':

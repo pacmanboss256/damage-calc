@@ -139,8 +139,8 @@ export function calculateSMSS(
   if (move.named('Weather Ball')) {
     const holdingUmbrella = attacker.hasItem('Utility Umbrella');
     type =
-      field.hasWeather('Sun', 'Harsh Sunshine') && !holdingUmbrella ? 'Fire'
-      : field.hasWeather('Rain', 'Heavy Rain') && !holdingUmbrella ? 'Water'
+      field.hasWeather('Sun', 'Harsh Sunshine', 'Sunny Day') && !holdingUmbrella ? 'Fire'
+      : field.hasWeather('Rain', 'Heavy Rain', 'Rain Dance') && !holdingUmbrella ? 'Water'
       : field.hasWeather('Sand') ? 'Rock'
       : field.hasWeather('Hail') ? 'Ice'
       : 'Normal';
