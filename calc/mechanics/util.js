@@ -183,10 +183,12 @@ function checkForecast(pokemon, weather) {
         switch (weather) {
             case 'Sun':
             case 'Harsh Sunshine':
+            case 'Sunny Day':
                 pokemon.types = ['Fire'];
                 break;
             case 'Rain':
             case 'Heavy Rain':
+            case 'Rain Dance':
                 pokemon.types = ['Water'];
                 break;
             case 'Hail':
