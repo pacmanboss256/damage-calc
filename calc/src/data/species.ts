@@ -8863,8 +8863,8 @@ const IE_PATCH: { [name: string]: DeepPartial<SpeciesData> } = {
   'Altaria-Mega': {bs: {sp: 100}},
   Zangoose: {bs: {df: 70, sd: 70, sp: 105}},
   Seviper: {bs: {sp: 100}},
-  Lunatone: {bs: {sa: 105, sd: 95}},
-  Solrock: {bs: {at: 105, df: 85}},
+  Lunatone: {bs: {sa: 125, sd: 115}},
+  Solrock: {bs: {at: 125, df: 115}},
   Whiscash: {bs: {at: 98}},
   Claydol: {bs: {hp: 70, sa: 90}},
   Cradily: {bs: {hp: 96, sa: 91}},
@@ -9003,7 +9003,7 @@ const IE_PATCH: { [name: string]: DeepPartial<SpeciesData> } = {
   Toucannon: {bs: {df: 95, sd: 95}},
   Gumshoos: {bs: {df: 80, sd: 80}},
   Charjabug: {bs: {at: 102}},
-  Vikavolt: {bs: {at: 95, df: 100, sp: 109}}, // wow
+  Vikavolt: {bs: {at: 95, df: 99, sp: 109}}, // wow
   Crabominable: {bs: {df: 97, sd: 87}},
   Oricorio: {bs: {sa: 108, sp: 103}},
   'Oricorio-Pa\'u': {bs: {sa: 108, sp: 103}},
