@@ -4127,7 +4127,7 @@ var IE_PATCH = {
     'Spirit Shackle': { bp: 90 },
     'Darkest Lariat': { bp: 95 },
     'Sparkling Aria': { bp: 100 },
-    'Freeze Dry': { bp: 95 },
+    'Freeze-Dry': { bp: 95 },
     'Twineedle': { bp: 45 },
     'Triple Kick': { bp: 20 },
     'Steel Wing': { bp: 90 },
@@ -4157,7 +4157,8 @@ var IE_PATCH = {
     'Solar Blade': { isBlade: true },
     'Behemoth Blade': { isBlade: true },
     'Breaking Swipe': { isBlade: true },
-    'Meteor Assault': { isBlade: true }
+    'Meteor Assault': { isBlade: true },
+    'Strength': { type: 'Rock', bp: 100 }
 };
 var SS = (0, util_1.extend)(true, {}, SM, SS_PATCH, IE_PATCH);
 var LGPE_MOVES = [

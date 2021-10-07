@@ -163,7 +163,7 @@ function calculateSMSS(gen, attacker, defender, move, field) {
         ? (0, util_2.getMoveEffectiveness)(gen, move, defender.types[1], isGhostRevealed, field.isGravity)
         : 1;
     var typeEffectiveness = type1Effectiveness * type2Effectiveness;
-    if (typeEffectiveness === 0 && move.named('Thousand Arrows' || 'Bonemerang')) {
+    if (typeEffectiveness === 0 && move.named('Thousand Arrows', 'Bonemerang')) {
         typeEffectiveness = 1;
     }
     else if (typeEffectiveness === 0 && move.hasType('Ground') &&
@@ -204,7 +204,7 @@ function calculateSMSS(gen, attacker, defender, move, field) {
         (move.hasType('Electric') &&
             defender.hasAbility('Lightning Rod', 'Motor Drive', 'Volt Absorb')) ||
         (move.hasType('Ground') &&
-            !field.isGravity && !move.named('Thousand Arrows' || 'Bonemerang') &&
+            !field.isGravity && !move.named('Thousand Arrows', 'Bonemerang') &&
             !defender.hasItem('Iron Ball') && defender.hasAbility('Levitate')) ||
         (move.flags.bullet && defender.hasAbility('Bulletproof')) ||
         (move.flags.sound && !move.named('Clangorous Soul') && defender.hasAbility('Soundproof')) ||
@@ -212,7 +212,7 @@ function calculateSMSS(gen, attacker, defender, move, field) {
         desc.defenderAbility = defender.ability;
         return result;
     }
-    if (move.hasType('Ground') && !move.named('Thousand Arrows' || 'Bonemerang') &&
+    if (move.hasType('Ground') && !move.named('Thousand Arrows', 'Bonemerang') &&
         !field.isGravity && defender.hasItem('Air Balloon')) {
         desc.defenderItem = defender.item;
         return result;
