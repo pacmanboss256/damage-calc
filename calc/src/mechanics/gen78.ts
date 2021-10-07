@@ -241,7 +241,7 @@ export function calculateSMSS(
     : 1;
   let typeEffectiveness = type1Effectiveness * type2Effectiveness;
 
-  if (typeEffectiveness === 0 && move.named('Thousand Arrows' || 'Bonemerang')) {
+  if (typeEffectiveness === 0 && move.named('Thousand Arrows', 'Bonemerang')) {
     typeEffectiveness = 1;
   } else if (typeEffectiveness === 0 && move.hasType('Ground') &&
     defender.hasItem('Iron Ball') && !defender.hasAbility('Klutz')) {
@@ -284,7 +284,7 @@ export function calculateSMSS(
       (move.hasType('Electric') &&
         defender.hasAbility('Lightning Rod', 'Motor Drive', 'Volt Absorb')) || 
       (move.hasType('Ground') &&
-        !field.isGravity && !move.named('Thousand Arrows' || 'Bonemerang') &&
+        !field.isGravity && !move.named('Thousand Arrows', 'Bonemerang') &&
         !defender.hasItem('Iron Ball') && defender.hasAbility('Levitate')) ||
       (move.flags.bullet && defender.hasAbility('Bulletproof')) ||
       (move.flags.sound && !move.named('Clangorous Soul') && defender.hasAbility('Soundproof')) ||
@@ -294,7 +294,7 @@ export function calculateSMSS(
     return result;
   }
 
-  if (move.hasType('Ground') && !move.named('Thousand Arrows' || 'Bonemerang') &&
+  if (move.hasType('Ground') && !move.named('Thousand Arrows', 'Bonemerang') &&
       !field.isGravity && defender.hasItem('Air Balloon')) {
     desc.defenderItem = defender.item;
     return result;

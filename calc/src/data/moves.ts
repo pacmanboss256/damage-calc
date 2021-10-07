@@ -4139,7 +4139,7 @@ const IE_PATCH: { [name: string]: DeepPartial<MoveData> } = {
   'Spirit Shackle': {bp: 90},
   'Darkest Lariat': {bp: 95},
   'Sparkling Aria': {bp: 100},
-  'Freeze Dry': {bp: 95},
+  'Freeze-Dry': {bp: 95},
   'Twineedle': {bp: 45},
   'Triple Kick': {bp: 20},
   'Steel Wing': {bp: 90},
@@ -4170,6 +4170,7 @@ const IE_PATCH: { [name: string]: DeepPartial<MoveData> } = {
   'Behemoth Blade': {isBlade: true},
   'Breaking Swipe': {isBlade: true},
   'Meteor Assault': {isBlade: true},
+  'Strength': {type: 'Rock', bp: 100},
 };
 
 const SS: {[name: string]: MoveData} = extend(true, {}, SM, SS_PATCH, IE_PATCH);
