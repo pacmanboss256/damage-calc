@@ -300,6 +300,7 @@ const IE = SS.concat([
   'Power Fists',
   'Sand Song',
   'Vengeance',
+  'Blitz Boxer',
 ]);
 
 export const ABILITIES = [[], RBY, GSC, ADV, DPP, BW, XY, SM, IE];

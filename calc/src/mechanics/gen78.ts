@@ -224,12 +224,15 @@ export function calculateSMSS(
   }
   move.type = type;
 
-  // FIXME: this is incorrect, should be move.flags.heal, not move.drain
-  if ((attacker.hasAbility('Triage') && move.drain) ||
-      (attacker.hasAbility('Gale Wings') &&
-       move.hasType('Flying') &&
-       attacker.curHP() === attacker.maxHP())) {
-    move.priority = 1;
+  // FIXME: this is incorrect, should be move.flags.heal, not move.drain 
+  if (((attacker.hasAbility('Gale Wings') && move.hasType('Flying')) || 
+    (attacker.hasAbility('Blitz Boxer') && move.flags.punch)) {
+    move.priority = move.priority + 1;
+    desc.attackerAbility = attacker.ability;
+  }
+  
+  if (attacker.hasAbility('Triage') && move.flags.drain) {
+    move.priority = move.priority + 3;
     desc.attackerAbility = attacker.ability;
   }
 
