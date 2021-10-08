@@ -225,7 +225,7 @@ export function calculateSMSS(
   move.type = type;
 
   // FIXME: this is incorrect, should be move.flags.heal, not move.drain 
-  if (((attacker.hasAbility('Gale Wings') && move.hasType('Flying')) || 
+  if ((attacker.hasAbility('Gale Wings') && move.hasType('Flying')) || 
     (attacker.hasAbility('Blitz Boxer') && move.flags.punch)) {
     move.priority = move.priority + 1;
     desc.attackerAbility = attacker.ability;
