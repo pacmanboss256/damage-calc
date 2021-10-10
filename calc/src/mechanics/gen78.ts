@@ -231,7 +231,7 @@ export function calculateSMSS(
     desc.attackerAbility = attacker.ability;
   }
   
-  if (attacker.hasAbility('Triage') && move.drain)) {
+  if (attacker.hasAbility('Triage') && move.drain) {
     move.priority = move.priority + 3;
     desc.attackerAbility = attacker.ability;
   }
