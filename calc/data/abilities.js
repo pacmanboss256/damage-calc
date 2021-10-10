@@ -333,6 +333,7 @@ var IE = SS.concat([
     'Power Fists',
     'Sand Song',
     'Vengeance',
+    'Blitz Boxer',
 ]);
 exports.ABILITIES = [[], RBY, GSC, ADV, DPP, BW, XY, SM, IE];
 var Abilities = (function () {

@@ -150,11 +150,13 @@ function calculateSMSS(gen, attacker, defender, move, field) {
         }
     }
     move.type = type;
-    if ((attacker.hasAbility('Triage') && move.drain) ||
-        (attacker.hasAbility('Gale Wings') &&
-            move.hasType('Flying') &&
-            attacker.curHP() === attacker.maxHP())) {
-        move.priority = 1;
+    if ((attacker.hasAbility('Gale Wings') && move.hasType('Flying')) ||
+        (attacker.hasAbility('Blitz Boxer') && move.flags.punch)) {
+        move.priority = move.priority + 1;
+        desc.attackerAbility = attacker.ability;
+    }
+    if (attacker.hasAbility('Triage') && move.drain) {
+        move.priority = move.priority + 3;
         desc.attackerAbility = attacker.ability;
     }
     var isGhostRevealed = attacker.hasAbility('Scrappy') || field.defenderSide.isForesight;
