@@ -8911,7 +8911,7 @@ var IE_PATCH = {
     Drapion: { bs: { at: 100, df: 120 } },
     Toxicroak: { bs: { sp: 95 } },
     Abomasnow: { bs: { at: 102, sa: 102 } },
-    'Abomasnow-Mega': { bs: { at: 142, sa: 102 } },
+    'Abomasnow-Mega': { bs: { at: 142, sa: 142 } },
     Carnivine: { bs: { df: 92, sd: 92 } },
     Lumineon: { bs: { sa: 109 } },
     Lickilicky: { bs: { at: 95, sa: 90 } },
