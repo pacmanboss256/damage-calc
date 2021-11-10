@@ -4158,7 +4158,8 @@ var IE_PATCH = {
     'Behemoth Blade': { isBlade: true },
     'Breaking Swipe': { isBlade: true },
     'Meteor Assault': { isBlade: true },
-    'Strength': { type: 'Rock', bp: 100 }
+    'Strength': { type: 'Rock', bp: 100 },
+    'Relic Song': { bp: 85 }
 };
 var SS = (0, util_1.extend)(true, {}, SM, SS_PATCH, IE_PATCH);
 var LGPE_MOVES = [
@@ -4242,6 +4243,8 @@ var Move = (function () {
             this.flags.sound = 1;
         if (data.isPulse)
             this.flags.pulse = 1;
+        if (data.isBlade)
+            this.flags.blade = 1;
         (0, util_1.assignWithout)(this, data, Move.FLAGS);
         this.basePower = data.bp;
         if (data.zp)
