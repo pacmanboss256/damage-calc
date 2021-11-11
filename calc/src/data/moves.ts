@@ -4171,6 +4171,7 @@ const IE_PATCH: { [name: string]: DeepPartial<MoveData> } = {
   'Breaking Swipe': {isBlade: true},
   'Meteor Assault': {isBlade: true},
   'Strength': {type: 'Rock', bp: 100},
+  'Relic Song': {bp: 85},
 };
 
 const SS: {[name: string]: MoveData} = extend(true, {}, SM, SS_PATCH, IE_PATCH);
@@ -4272,6 +4273,7 @@ class Move implements I.Move {
     if (data.isBullet) this.flags.bullet = 1;
     if (data.isSound) this.flags.sound = 1;
     if (data.isPulse) this.flags.pulse = 1;
+    if (data.isBlade) this.flags.blade = 1;
 
     assignWithout(this, data, Move.FLAGS);
 
